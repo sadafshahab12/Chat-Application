@@ -19,3 +19,5 @@ Nested Object	user?.address?.city
 Function Call	props.onSubmit?.()
 Array Element	arr?.[0]?.title
 JSON from API	data?.items?.[0]?.details?.url
+
+break-all	Word wrapping, long strings won't overflow
