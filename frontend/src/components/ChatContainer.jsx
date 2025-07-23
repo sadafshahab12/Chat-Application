@@ -5,12 +5,14 @@ import { formatMsgTime } from "../lib/utils";
 const ChatContainer = ({ selectedUser, setSelectedUser }) => {
   const scrollEnd = useRef();
   useEffect(() => {
-    if (scrollEnd.current) {
-      scrollEnd.current.scrollIntoView({
+    const timeout = setTimeout(() => {
+      scrollEnd.current?.scrollIntoView({
         behavior: "smooth",
       });
-    }
-  }, []);
+    }, 50);
+    console.log(timeout);
+    return () => clearTimeout(timeout);
+  }, [selectedUser, messagesDummyData]);
 
   return selectedUser ? (
     <div className="h-full overflow-scroll relative backdrop-blur-lg">
@@ -39,7 +41,7 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
       </div>
 
       {/* chat area/  message area  */}
-      <div className="flex flex-col h-[calc(100%-120px)] overflow-y-scroll p-3 pb-6">
+      <div className="flex flex-col h-[calc(100%-120px)] overflow-y-scroll p-3 pb-6 scroll-smooth">
         {messagesDummyData.map((msg, index) => (
           <div
             key={index}
@@ -83,10 +85,31 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
       </div>
       {/* //message box  */}
       <div className="absolute bottom-0 left-0 right-0 flex items-center gap-3 p-3">
-        <div>
-          
+        <div className="flex-1 flex items-center bg-gray-100/12 px-3 rounded-full ">
+          <input
+            type="text"
+            placeholder="Send a message ..."
+            className="flex-1 text-sm p-3 border-none rounded-lg outline-none text-white placeholder-gray-400"
+          />
+          <input
+            type="file"
+            id="image"
+            accept="image/png, image/jpeg, image/jpg"
+            hidden
+          />
+          <label htmlFor="image">
+            <img
+              src={assets.gallery_icon}
+              alt="send-gallery-image"
+              className="w-5 mr-2 cursor-pointer"
+            />
+          </label>
         </div>
-
+        <img
+          src={assets.send_button}
+          alt="send-icon"
+          className="w-7 cursor-pointer"
+        />
       </div>
     </div>
   ) : (
