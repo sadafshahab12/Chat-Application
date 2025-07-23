@@ -14,9 +14,18 @@ const Home = () => {
             : "grid-cols-2"
         }`}
       >
-        <LeftSidebar />
-        <ChatContainer />
-        <RightSiderbar />
+        <LeftSidebar
+          selectedUser={seletedUser}
+          setSelectedUser={setSelectedUser}
+        />
+        <ChatContainer
+          selectedUser={seletedUser}
+          setSelectedUser={setSelectedUser}
+        />
+        <RightSiderbar
+          selectedUser={seletedUser}
+          setSelectedUser={setSelectedUser}
+        />
       </div>
     </div>
   );
