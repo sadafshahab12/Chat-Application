@@ -5,13 +5,13 @@ import Login from "./pages/Login";
 
 function App() {
   return (
-    <>
+    <div className="bg-[url('./src/assets/bgImage.svg')] bg-contain">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
