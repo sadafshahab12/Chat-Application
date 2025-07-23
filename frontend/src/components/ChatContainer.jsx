@@ -10,7 +10,6 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
         behavior: "smooth",
       });
     }, 50);
-    console.log(timeout);
     return () => clearTimeout(timeout);
   }, [selectedUser, messagesDummyData]);
 
